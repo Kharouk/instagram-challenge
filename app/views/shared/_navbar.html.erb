@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container">
+      <%= link_to "Icon", root_path, class: "navbar-brand core-sprite hide-text"%>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="form-inline my-2 my-lg-0 ml-md-auto">
+          <input class="form-control mr-sm-2 text-center" type="search" placeholder="Search" aria-label="Search">
+        </form>
+        <ul class="navbar-nav ml-md-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to 'notifications', root_path, :class => 'nav-link notification-icon hide-text core-sprite' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "View profile", user_path(current_user.id), :class => 'nav-link profile-icon core-sprite hide-text'  %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-link'  %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Sign up", new_user_registration_path, :class => 'nav-link'  %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, :class => 'nav-link'  %>
+          </li>
+        <% end %> 
+        </ul>
+      </div>
+    </div>
+  </nav>
